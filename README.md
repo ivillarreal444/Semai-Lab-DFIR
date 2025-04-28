@@ -21,6 +21,6 @@ This DFIR-based home lab project aimed to establish a controlled environment for
 
 ## Steps
 **Network Diagram**
-  <img src="https://imgur.com/a/EWrMCyY" />
+  <img src="https://i.imgur.com/ClQwiXj.png" />
 
 
