@@ -28,6 +28,9 @@ To better visualize how my home lab will look like during basic setup, I created
 
 <img src="https://i.imgur.com/ClQwiXj.png" width="500" height="1000" />
 
+**pfSense Setup**
+Once my network diagram was finished, I grabbed a pfSense ISO file and started installing the firewall onto my VirtualBox installation. Once it finished installing, I then configured the virtual network adapter interfaces that I will be using in this portion of the homelab setup. Later on there will be more ports that I will be adding, but I will only need these interfaces for now.
 
+<img src="https://i.imgur.com/StHJ0oT.png" width="500" height="100" />
 
 
