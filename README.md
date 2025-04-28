@@ -19,10 +19,13 @@ This DFIR-based home lab project aimed to establish a controlled environment for
 - Security Information and Event Management (SIEM) system for log ingestion and analysis.
 - Telemetry generation tools to create realistic network traffic and attack scenarios.
 
-<img src="https://i.imgur.com/ClQwiXj.png" />
+
 
 ## Steps
 **Network Diagram**
+To better visualize how my home lab will look like during basic setup, I created a network diagram that will showcase my environment upon completion. 
+<img src="https://i.imgur.com/ClQwiXj.png" width="50" height="50" />
+
 
 
 
