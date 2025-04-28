@@ -20,10 +20,7 @@ This DFIR-based home lab project aimed to establish a controlled environment for
 - Telemetry generation tools to create realistic network traffic and attack scenarios.
 
 ## Steps
-drag & drop screenshots here or use imgur and reference them using imgsrc
+**Network Diagram**
+  <img src="https://imgur.com/a/EWrMCyY" />
 
-Every screenshot should have some text explaining what the screenshot is about.
 
-Example below.
-
-*Ref 1: Network Diagram*
