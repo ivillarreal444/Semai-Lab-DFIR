@@ -24,7 +24,7 @@ This DFIR-based home lab project aimed to establish a controlled environment for
 ## Steps
 **Network Diagram**
 To better visualize how my home lab will look like during basic setup, I created a network diagram that will showcase my environment upon completion. 
-<img src="https://i.imgur.com/ClQwiXj.png" width="50" height="50" />
+<img src="https://i.imgur.com/ClQwiXj.png" width="300" height="300" />
 
 
 
