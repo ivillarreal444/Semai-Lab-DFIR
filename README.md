@@ -34,4 +34,9 @@ Once my network diagram was finished, I grabbed a pfSense ISO file and started i
 
 <img src="https://i.imgur.com/StHJ0oT.png" width="500" height="100" />
 
+**Kali Linux Setup & pfSense Firewall Setup**
+
+I then set up my main environment, which I chose to be a Kali Linux environment as it is the linux distro I am more familiar with, and it also has a bunch of nice tools that I could use to conduct my own vulnerability assessments of the other machines that I will be creating throughout this project. Once my main environment was setup, I was able to access the pfSense dashboard through pfSense's provided DNS server. From here I set up my own domain and hostname for the lab, as well as changing the password of the admin user. 
+<img src = "https://i.imgur.com/4QJh9qh.png" width="700" height="500" />
+
 
