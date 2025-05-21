@@ -34,9 +34,21 @@ Once my network diagram was finished, I grabbed a pfSense ISO file and started i
 
 <img src="https://i.imgur.com/StHJ0oT.png" width="500" height="100" />
 
-**Kali Linux Setup & pfSense Firewall Setup**
+**Kali Linux, pfSense Firewall, and Cyber Range Setup**
 
 I then set up my main environment, which I chose to be a Kali Linux environment as it is the linux distro I am more familiar with, and it also has a bunch of nice tools that I could use to conduct my own vulnerability assessments of the other machines that I will be creating throughout this project. Once my main environment was setup, I was able to access the pfSense dashboard through pfSense's provided DNS server. From here I set up my own domain and hostname for the lab, as well as changing the password of the admin user. 
 <img src = "https://i.imgur.com/4QJh9qh.png" width="700" height="500" />
 
+Once setup was completed, I set up the firewall rules for the LAN, CYBER_RANGE, and AD_LAB subnets. These rules ensure that traffic flows to the subnets they are supposed to flow through, and that traffic does not flow to subnets they are not supposed to flow through.
 
+<img src = "https://i.imgur.com/47PT5xm.png" width="1000" height="200" />
+<img src = "https://i.imgur.com/R5kZBEL.png" width="1000" height="250" />
+<img src = "https://i.imgur.com/eAvMFbH.png" width="1000" height="200" />
+
+After all the firewall rules were setup, I then set up Metasploitable 2 and Chronos instances, which were super simple, as all I had to do was download the ISOs, drop them in VirtualBox, and they were ready to go immediately (other than chronos, still figuring out how to get the login for chronos as of writing this...).
+
+**Active Directory Setup**
+
+My Active Directory environment consists of 3 Windows VMs, one of them being the Domain Controller (running Windows Server 2019), and the other two serving as clients for the Domain Controller (both running Windows 10 Enterprise). After setting up my Domain Controller VM, I then installed all of the essentials required for the machine to serve as the Domain Controller, such as the Active Directory Certificate Service and the Active Directory Domain Service. Once those were installed and running, I then configured the DNS and DHCP services so that the clients are able to properly connect to the domain controller. The DNS service will be configured with a forwarder that will forward DNS queries to pfSense if the domain controller cannot resolve them. The DHCP will assign random IP addresses to the two clients in order for them to connect to the domain controller's DNS.
+
+<img src = "https://i.imgur.com/U6cys6Y.png" width="1000" height="500" />
