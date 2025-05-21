@@ -58,3 +58,16 @@ In this active directory environment, the other two machines should serve as cli
 <img src = "https://i.imgur.com/lHVUUtL.png" width="200" height="100" />
 
 And since this entire lab was supposed to be for DFIR purposes, it will be a lot more fun to have at least one vulnerable machine in the entire environment, thus, I executed a script that created multiple vulnerabilities up to and including the addition of multiple random users into the AD. This, in turn, is why my AD user list currently looks like this:
+
+<img src = "https://i.imgur.com/nJwJ35t.png" width="500" height="350" />
+
+After this, all that was left to do was setup the other 2 VMs, add them to the AD domain under their correct users, and the AD environment is complete.
+
+Before moving forward, I added 2 new interfaces to pfSense through VBoxManage and configured their firewall rules in order to continue with the project, as VirtualBox only allows 4 interfaces to be created by default.
+
+<img src = "https://i.imgur.com/WhV9iXb.png" width="1000" height="200" />
+<img src = "https://i.imgur.com/XeU7cm6.png" width="1000" height="100" />
+
+**Tsurugi Linux Setup**
+Setting up this system was supposed to be as easy as setting up Metasploitable, Kali, and Chronos, however, because of the .iso file on the download page being broken for some reason, I ended up just downloading the .ova file instead, as I was already using VirtualBox for this project, which allowed me to use .ova files for installation purposes. 
+
