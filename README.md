@@ -71,3 +71,13 @@ Before moving forward, I added 2 new interfaces to pfSense through VBoxManage an
 **Tsurugi Linux Setup**
 Setting up this system was supposed to be as easy as setting up Metasploitable, Kali, and Chronos, however, because of the .iso file on the download page being broken for some reason, I ended up just downloading the .ova file instead, as I was already using VirtualBox for this project, which allowed me to use .ova files for installation purposes. 
 
+**ELK Stack Setup**
+In order to fully understand what exactly is happening whenever malware is deployed onto my vulnerable machines, I'll need to find some way to capture data, particularly logs and security events. This is where the ELK Stack (Elasticsearch, Logstash, Kibana) comes into play, as all three play major roles in my DFIR environment, which can be seen when I eventually start deploying malware samples into my vulnerable machines.
+
+Firstly, however, in order to get ELK stack working, they must be configured in its own virual machine, which I ended up using Ubuntu Server for, as the setup is pretty simple and has everything I need to get the ELK stack working, such as OpenSSH server.
+
+<img src = "https://i.imgur.com/yh48fOC.png" width="500" height="350" />
+
+After setting up apt to allow TLS/SSL downloads from external repositories, I was able to use APT to install the first of the stack, Elasticsearch by downloading its GPG (GnuPrivacyGuard) key and its repository to the machine.
+
+<img src = "https://i.imgur.com/mXC5m1C.png" width="500" height="350" />
