@@ -86,32 +86,29 @@ In order to get elasticsearch running, I'll need to configure a couple of things
 
 <img src = "https://i.imgur.com/HVAdaWP.png" width="500" height="350" />
 
+<img src = "https://i.imgur.com/0Dg3Hnj.png" width="500" height="350" />
+
 I am now able to start and enable Elasticsearch using systemctl, browsing to our set network host address over our set http port and ensuring it is accessible.
 
-<image goes here>
+<img src = "https://i.imgur.com/F4Ksb6y.png" width="500" height="350" />
 
 Setting up Kibana is pretty similar. Simply install the repository, configure the YAML file with the proper server port, host, and name, and starting and enabling the service, while also restarting Elasticsearch in order to allow the service to recognize that Kibana is installed.
 
-<image goes here>
+<img src = "https://i.imgur.com/ldAsg0r.png" width="500" height="350" />
 
 Both services should now be running.
 
-<image goes here>
+<img src = "https://i.imgur.com/182QBha.png" width="500" height="350" />
 
-<logstash part will come later>
-
-<image goes here>
-
-Next, I'll install Filebeat, which will play a role in collecting and stashing my necessary logs. 
-
-<image goes here>
-
-I'll also be sure to configure filebeat's YAML file in vim to ensure that it contains our Elasticsearch host address in order to connect to it.
-
-<image goes here>
-
-<filebeat/logstash segment comes later>
-
-<image goes here>
+**NOTE**: Logstash is technically not required for this part of the setup, but I ended up installing it anyways in case I need it for any future activities that may require it, which in that case logstash setup will likely be included in that project's page instead of here, and this part of the writeup should contain a direct link to that project's page.
 
 
+Next, I'll install Filebeat, which will play a role in collecting and stashing my necessary logs, being sure to configure filebeat's YAML file in vim to ensure that it contains the Elasticsearch host address in order to connect to it.
+
+<img src = "https://i.imgur.com/o6f88B9.png" width="500" height="350" />
+
+I also need to tell Filebeat that I'm currently not using Logstash logging and that the host in the configuration file is the right one.
+
+<img src = "https://i.imgur.com/9dZnHCD.png" width="500" height="350" />
+
+Once filebeat is up and running, 
