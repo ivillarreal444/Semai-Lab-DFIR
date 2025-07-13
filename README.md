@@ -84,7 +84,7 @@ After setting up apt to allow TLS/SSL downloads from external repositories, I wa
 
 In order to get elasticsearch running, I'll need to configure a couple of things in the YAML configuration file that came with the service using vim. I'll need to set up a name for the cluster, which I ended up naming after the entire lab's name, and also set the ip and port of the network host and http port (NOTE: discovery.type is not included in the YAML file by default and must be manually added.
 
-<image goes here>
+<img src = "https://i.imgur.com/HVAdaWP.png" width="500" height="350" />
 
 I am now able to start and enable Elasticsearch using systemctl, browsing to our set network host address over our set http port and ensuring it is accessible.
 
