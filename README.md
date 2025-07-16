@@ -111,4 +111,18 @@ I also need to tell Filebeat that I'm currently not using Logstash logging and t
 
 <img src = "https://i.imgur.com/9dZnHCD.png" width="500" height="350" />
 
-Once filebeat is up and running, 
+Once filebeat is up and running, it's best to check that all indices are working properly using a curl command so that logs can be ingested properly.
+
+<img src = "https://i.imgur.com/7Y5ex9G.png" width="500" height="350" />
+
+**Creating a Certificate Authrority**
+
+Now that the ELK stack has been mostly setup, before I do anything with the SIEM, there is something very important that I'm missing, and that important thing is security. Technically since this is a home lab it would be okay to run everything on HTTP and without a certificate authority, but if I'm going to be getting my hands dirty with malware in the lab, it would be best to secure the environment a bit more. Besides, it would also restrict a lot of features in the ELK stack if I don't implement a certificate authority anyways.
+
+To start things off, in the usr/share/elasticsearch directory, I created an "instances.yml" file and listed every instance with the IP of the machine.
+
+<img src = "https://i.imgur.com/BaoyELH.png" width="500" height="350" />
+
+Using elastic's certutil feature, I created a Certificate Authority bundle that provided me with a zip folder. Upon unzipping such folder, I now have a ca/ directory, a certificate file, and a matching key for the Certificate Authority.
+
+<img src = "https://i.imgur.com/Ndjl8b7.png" width="500" height="350" />
