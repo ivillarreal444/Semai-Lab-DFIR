@@ -172,3 +172,36 @@ The kibana_system credentials are important for the kibana.yml file in order for
 A quick restart of both Elasticsearch and Kibana and I am now able to access Elastic on my Kali machine!
 
 <img src = "https://i.imgur.com/Nqqupr4.png" width="500" height="350" />
+
+**Fleets**
+
+Fleets are agents that can be deployed to any machine and is responsible for data collection and log ingestion. This will be pretty important once I start experimenting with malware on the Active Directory machine.
+
+Once I set my fleet server host to the ELK stack VM's address, I will then recieve a service token, which I'll need later on if I want to access the elasticsearch database.
+
+Going back to my ELK stack machine, I then install the required files in order for the fleet agent to work.
+
+<img src = "https://i.imgur.com/Gtr793d.png" width="500" height="350" />
+
+Returning to the interface and copying the fleet install commands...
+
+<img src = "https://i.imgur.com/HfWccNA.png" width="500" height="350" />
+
+...the fleet service should now be running!
+
+<img src = "https://i.imgur.com/Ja6Hrju.png" width="500" height="350" />
+
+In the fleet settings, all I need to do now is change my elasticsearch host to the host of the ELK stack VM, and now I am ready to install an agent to the vulnerable AD machine!
+
+The nice thing about fleet is that it has a Windows Endpoints policy specifically for Windows machines, which makes it super easy to ingest PowerShell logs as well as Sysmon logs, making it easier to pinpoint suspicious activity in our ingested logs.
+
+
+<img src = "https://i.imgur.com/FJNPobN.png" width="500" height="350" />
+
+A certificate import from ELK Stack VM to Active Directory VM, as well as a simple Fleet Agent install command later, and my DFIR environment is ready!
+
+<img src = "https://i.imgur.com/ydYfreg.png" width="500" height="350" />
+
+
+**Conclusion**
+Throughout this setup, I learned a lot about the behind-the-scenes of SIEM setup, and although this is only a homelab-oriented setup, it is pretty essential to learn the basics of how to set up clusters in order to get an understanding of how several features, including certificate authorities, are configured and ran in a corporate environment. Not only can these skills be used in a homelab environment, but they can be also used in competitive environments, including competitions like CyberForce and CCDC, providing me with a useful skill for my university's teams.
