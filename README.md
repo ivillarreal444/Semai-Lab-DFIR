@@ -126,3 +126,49 @@ To start things off, in the usr/share/elasticsearch directory, I created an "ins
 Using elastic's certutil feature, I created a Certificate Authority bundle that provided me with a zip folder. Upon unzipping such folder, I now have a ca/ directory, a certificate file, and a matching key for the Certificate Authority.
 
 <img src = "https://i.imgur.com/Ndjl8b7.png" width="500" height="350" />
+
+I will use the same certutil feature to also generate our certificates that will be signed by the certificate authority.
+
+<img src = "https://i.imgur.com/BeZUawP.png" width="500" height="350" />
+
+After unzipping the bundle, I made a new directory, certs/, that I will copy the files provided to me from the bundle generates by the certutil feature to.
+
+<img src = "https://i.imgur.com/58XKuP7.png" width="500" height="350" />
+
+The bundle provided us with two types of certificates: public certificates and dedicated certificates that lead to each service in instances.yml. To eliminate any confusion and to provide the proper certificates to the certificate authority, I created ca/ and certs/ directories in each service's directories and copied each certificate to their respective directories:
+
+Public certs to the ca/ directory:
+
+<img src = "https://i.imgur.com/NP4pung.png" width="500" height="350" />
+
+Dedicated certificates to the certs/ directory:
+
+<img src = "https://i.imgur.com/KP9e4g5.png" width="500" height="350" />
+
+After a bunch of cleaning up of leftover files, as well as managing a couple of permissions around (so that elk can have access to elasticsearch/ and kibana/ because for some reason it doesn't and i have to do that manually), I printed all of my certificate information to the console, ensuring my certificates were properly generated.
+
+<img src = "https://i.imgur.com/Ajp3TG8.png" width="500" height="350" />
+
+Now I can add security features to the Elasticsearch and Kibana services.
+
+Elasticsearch.yml:
+
+<img src = "https://i.imgur.com/VFqa6WF.png" width="500" height="350" />
+
+Kibana.yml:
+
+<img src = "https://i.imgur.com/I3GUBT8.png" width="500" height="350" />
+
+From here, I can't quite connect to the host using curl -XGET, and this is because A. The machine doesn't trust the certificate authority and B. With our security features enabled, authentication is required to connect to the host.
+
+<img src = "https://i.imgur.com/I03ydH3.png" width="500" height="350" />
+
+(For security reasons, I'm not providing screenshots for these next two steps.)
+
+To grab the credentials I need, I simply generate them using elasticsearch's setup-passwords utility.
+
+The kibana_system credentials are important for the kibana.yml file in order for kibana to interact with elasticsearch, so I went ahead and copied the kibana_system credentials to kibana.yml.
+
+A quick restart of both Elasticsearch and Kibana and I am now able to access Elastic on my Kali machine!
+
+<img src = "https://i.imgur.com/Nqqupr4.png" width="500" height="350" />
