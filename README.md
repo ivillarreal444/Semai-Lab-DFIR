@@ -7,17 +7,14 @@ This DFIR-based home lab project aimed to establish a controlled environment for
 ### Skills Learned
 
 - Advanced understanding of SIEM concepts and practical application.
-- Proficiency in analyzing and interpreting network logs.
-- Ability to generate and recognize attack signatures and patterns.
-- Ability to recognize and detect malicious hashes.
-- Ability to mitigate malicious files and executables.
-- Enhanced knowledge of network protocols and security vulnerabilities.
+- Ability to ingest and generate network logs.
+- Enhanced knowledge of Certificate Authorities and the Windows Active Directory Environment
 - Development of critical thinking and problem-solving skills in cybersecurity.
 
 ### Tools Used
-
+- Type-2 Hypervisor for Virtual Machine Cluster setup
+- Windows and Linux machines for various DFIR environments
 - Security Information and Event Management (SIEM) system for log ingestion and analysis.
-- Telemetry generation tools to create realistic network traffic and attack scenarios.
 
 
 
