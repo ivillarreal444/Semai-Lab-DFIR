@@ -20,3 +20,7 @@ This DFIR-based home lab project aimed to establish a controlled environment for
 
 ## Steps
 In this first scenario, I will be using this [malware](https://github.com/k-perrino/malware-workshop-acm-w) provided to me by UTSA's ACM community.
+
+Before running this malware, I took a snapshot of every machine that I will be using in this scenario, these machines being the Kali VM, the Active Directory VM, and just incase, the FlareVM and the REMnux VM. I probably only need the AD, Kali, and FlareVM machines for this scenario, but I have REMnux at the ready in case I need it.
+
+
