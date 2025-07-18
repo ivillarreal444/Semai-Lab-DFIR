@@ -1,4 +1,4 @@
-# Semai Lab DFIR
+# Semai Lab DFIR: Cluster Setup
 
 ## Objective
 
