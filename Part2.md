@@ -19,8 +19,17 @@ This DFIR-based home lab project aimed to establish a controlled environment for
 
 
 ## Steps
-In this first scenario, I will be using this [malware](https://github.com/k-perrino/malware-workshop-acm-w) provided to me by UTSA's ACM community.
+In this first scenario, I will be using my Kali VM that was created in Part 1 of this project series. Kali contains many attack modules that can be utilized to perform various attacks, and in this part of the project, I will demonstrate some of these attack modules, as well as the event logs in elastic that were generated from these attacks.
 
-Before running this malware, I took a snapshot of every machine that I will be using in this scenario, these machines being the Kali VM, the Active Directory VM, and just incase, the FlareVM and the REMnux VM. I probably only need the AD, Kali, and FlareVM machines for this scenario, but I have REMnux at the ready in case I need it.
+Before running this malware, I took a snapshot of every machine that I will be using in this scenario, these machines being the Kali VM, the Active Directory VM, and just incase, the FlareVM and the REMnux VM. I probably only need Kali, Kali, and the Domain Controller for this scenario, but I have REMnux and FlareVM at the ready in case I need them.
 
+
+**Scenario 1: Password Spraying**
+Password Spraying is one of the easiest and most common attack techniques as it involves utilizing lists of common usernames and passwords, repeatedly brute-forcing those usernames and passwords throughout an entire server, and analyzing which accounts have successful logins from these attempts. In a very secure environment, this should not be that much of a problem, but even in today's environment it can still be a viable strategy, especially when targeting individuals who might not have much knowledge of internet security.
+
+When scanning the environment with nmap, I noticed that there are a LOT of ports open in the Domain Controller. This is most likely the result of the script I downloaded during the AD setup, which opened the domain controller to many vulnerabilities, such as these open ports that I am now able to exploit.
+
+<img src="https://i.imgur.com/ugMnIjM.png" width="500" height="1000" />
+
+This might make it easy to get Hydra, a password sprayer, up and running in the simplest way possible. 
 
