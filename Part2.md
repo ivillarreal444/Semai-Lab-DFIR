@@ -24,6 +24,13 @@ In this first scenario, I will be using my Kali VM that was created in Part 1 of
 Before running this malware, I took a snapshot of every machine that I will be using in this scenario, these machines being the Kali VM, the Active Directory VM, and just incase, the FlareVM and the REMnux VM. I probably only need Kali, Kali, and the Domain Controller for this scenario, but I have REMnux and FlareVM at the ready in case I need them.
 
 
+**Elastic Defend Setup**
+In Part 1, 
+
+<img src="https://i.imgur.com/GswHYfB.png" width="500" height="1000" />
+
+
+
 **Scenario 1: Password Spraying**
 Password Spraying is one of the easiest and most common attack techniques as it involves utilizing lists of common usernames and passwords, repeatedly brute-forcing those usernames and passwords throughout an entire server, and analyzing which accounts have successful logins from these attempts. In a very secure environment, this should not be that much of a problem, but even in today's environment it can still be a viable strategy, especially when targeting individuals who might not have much knowledge of internet security.
 
