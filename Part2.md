@@ -1,8 +1,8 @@
-# Semai Lab DFIR: Simulating an Attack
+# Semai Lab DFIR: Simulating and Detecting an Attack using Elastic Defend
 
 ## Objective
 
-This DFIR-based home lab project aimed to establish a controlled environment for simulating and detecting various types of cyber attacks. The primary focus was to ingest and analyze logs within a Security Information and Event Management (SIEM) system and simulate scenarios from basic learning scenarios to imitating real world scenarios. In this part of the project, various programs will be simulating attack scenarios, with the main goal being to simulate a real-world attack scenario to discover and deepen my understanding in how to investigate various attack scenarios
+This DFIR-based home lab project aimed to establish a controlled environment for simulating and detecting various types of cyber attacks. The primary focus was to ingest and analyze logs within a Security Information and Event Management (SIEM) system and simulate scenarios from basic learning scenarios to imitating real world scenarios. Elasticsearch's "Defend" feature is an EDR tool that assists with security by providing malware protection, threat detection, and automated response capabilities. In this part of the project, I will be setting up Elastic Defend and simulating an attack in order to gain a better understanding of log analysis.
 
 ### Skills Learned
 
