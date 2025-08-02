@@ -25,10 +25,13 @@ Before running this malware, I took a snapshot of every machine that I will be u
 
 
 **Elastic Defend Setup**
-In Part 1, 
+In Part 1, the agent I had deployed into my Domain Controller machine was previously configured with Elastic Security as I had used Windows integrations in order to ingest various systems logs, however, in order to actually pick up other various logs, such as things that might occur in other areas of the machine, such as endpoints, I need to add an additional integration to my elastic instance. This is where the "Endpoint Security" integration comes into play, as it will be extremely useful for capturing endpoint logs for various attacks I will demonstrate in this part of the project.
 
 <img src="https://i.imgur.com/GswHYfB.png" width="500" height="1000" />
 
+I decided to add the integration to the default agent policy, just incase I add any agents to other instances like my Kali instance or my REMnux instance.
+
+<img src="https://i.imgur.com/PJb61UZ.png" width="500" height="1000" />
 
 
 **Scenario 1: Password Spraying**
