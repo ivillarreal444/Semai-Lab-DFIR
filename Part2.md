@@ -43,3 +43,14 @@ The combination of 4776 and 4634 event codes, which are prevalent in this data v
 
 
 <img src="https://i.imgur.com/vokCb9I.png" width="500" height="1000" />
+
+In a typical work environment, usually attempts like these would be a warning sign of a brute-force attack, but sometimes it can also just be an employee forgetting their password and repeatedly trying different passwords to try and get back in, which in that case the employee would be contacted to reset their password. In an actual brute force attack however.....
+
+<img src="https://i.imgur.com/ZbfBNPs.png" width="500" height="1000" />
+
+....yeah. I don't think a typical employee would try logging in 25,000+ times....well...unless they're absolutely psychotic.
+
+**Remediation**
+
+In something like this, I experimented with a tool called Fail2ban, which will block an ip with a set amount of consecutive login attempts for a set amount of time in order to stop brute-force attempts from happening. In this scenario, I integrated Fail2ban with Filebeat so that I can ingest logs from Fail2ban through Filebeat, making it easier to track when Fail2ban blocks an IP when it hits the set amount of consecutive login attempts.
+
