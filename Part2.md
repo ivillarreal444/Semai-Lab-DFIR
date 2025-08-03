@@ -35,11 +35,11 @@ This might make it easy to get Hydra, a password sprayer, up and running in the 
 
 Running Hydra on port 3389, I'm getting a lot of log responses in Elastic, more specifically lots of 4776 event codes. Looking at the logs, it seems that Hyrdra is specifically targetting the "Guest" account, with most of the credentials not seeming to validate at all.
 
-<img src="https://imgur.com/MDJ8Qeg" width="500" height="1000" />
+<img src="https://i.imgur.com/MDJ8Qeg.png" width="500" height="1000" />
 
-<img src="https://imgur.com/GEsoLYY" width="500" height="1000" />
+<img src="https://i.imgur.com/GEsoLYY.png" width="500" height="1000" />
 
 The combination of 4776 and 4634 event codes, which are prevalent in this data visualizer below, is a clear sign that there is some sort of brute force attempt happening to the domain controller, which in this case, is the kali instance brute forcing the RDP port of my domain controller using Hydra.
 
 
-<img src="https://imgur.com/vokCb9I" width="500" height="1000" />
+<img src="https://i.imgur.com/vokCb9I.png" width="500" height="1000" />
