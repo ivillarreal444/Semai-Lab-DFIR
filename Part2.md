@@ -62,4 +62,8 @@ Fail2ban comes with a default configuration file, just like other services in th
 
 <img src="https://i.imgur.com/Bw4ZcCP.png" width="500" height="1000" />
 
-In the config file, I can adjust various factors, including bantime, ban duration multipliers for multiple failed attempts, etc. I'll leave everything at default for now, but this is where Logstash comes in handy as I'll be utilizing it to store any logs that Fail2ban creates.
+In the config file, I can adjust various factors, including bantime, ban duration multipliers for multiple failed attempts, etc. I'll leave everything at default for now, but this is where Filebeat comes in handy as I'll be utilizing it to store any logs that Fail2ban creates.
+
+Previously, I did not really have a use for the filestream feature in Filebeat as I used the service's default configuration to ingest logs, but since I'm adding fail2ban as a configuration to the service, it's a good time to enable this as well as add fail2ban's fields to the configuration file.
+
+<img src="https://i.imgur.com/mvU0dmK.png" width="500" height="1000" />
