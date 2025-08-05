@@ -54,3 +54,12 @@ In a typical work environment, usually attempts like these would be a warning si
 
 In something like this, I experimented with a tool called Fail2ban, which will block an ip with a set amount of consecutive login attempts for a set amount of time in order to stop brute-force attempts from happening. In this scenario, I integrated Fail2ban with Filebeat so that I can ingest logs from Fail2ban through Filebeat, making it easier to track when Fail2ban blocks an IP when it hits the set amount of consecutive login attempts.
 
+Fail2ban installation is a little easier than the past ELK service installations as it comes included in Debian/Ubuntu's APT library. Just sudo apt install file2beat and it's pretty much installed, although in order for Fail2ban to work properly, I need to allow SSH access through UFW and then enable the firewall from there.
+
+<img src="https://i.imgur.com/7pJvcwb.png" width="500" height="1000" />
+
+Fail2ban comes with a default configuration file, just like other services in the ELK stack, but this default config file should be kept in the event that issues arise. For now, I'll copy this file to a different file instead. 
+
+<img src="https://i.imgur.com/Bw4ZcCP.png" width="500" height="1000" />
+
+In the config file, I can adjust various factors, including bantime, ban duration multipliers for multiple failed attempts, etc. I'll leave everything at default for now, but this is where Logstash comes in handy as I'll be utilizing it to store any logs that Fail2ban creates.
