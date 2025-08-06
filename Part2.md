@@ -67,3 +67,20 @@ In the config file, I can adjust various factors, including bantime, ban duratio
 Previously, I did not really have a use for the filestream feature in Filebeat as I used the service's default configuration to ingest logs, but since I'm adding fail2ban as a configuration to the service, it's a good time to enable this as well as add fail2ban's fields to the configuration file.
 
 <img src="https://i.imgur.com/mvU0dmK.png" width="500" height="1000" />
+
+Checking fail2ban's state using "fail2ban-client -h" and it seems to be working on the machine as it prints out fail2ban's documentation.
+
+<img src="https://i.imgur.com/QeKPWX1.png" width="500" height="1000" />
+
+Just incase, since I'm likely also going to add more than just Filebeat in the future, especially to ingest more Windows logs, this is probably a great time to setup Logstash.
+
+Using nano and vim, I created a fail2ban.conf file inside the Logstash directory in order for Logstash to recognize Fail2ban.
+
+<img src="https://i.imgur.com/R7XTyIb.png" width="500" height="1000" />
+
+Once that was done, I then created a patterns/ directory and added the following:
+
+<img src="https://i.imgur.com/VMOGELl.png" width="500" height="1000" />
+
+After these expression patterns are added, I then force reloaded logstash.
+
