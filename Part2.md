@@ -106,3 +106,14 @@ Realistically the only thing I could do here was create an event log source for 
 After this, Fail2Ban4Win is now displaying logs in the Event log, and now it is time to start the Hydra attack once again from my Kali machine.
 
 <img src="https://i.imgur.com/dukMLVa.png" width="500" height="1000" />
+
+Wait...that's new! The entire connection just dropped after a couple of failed attempts!
+
+<img src="https://i.imgur.com/1b2VU5l.png" width="500" height="1000" />
+
+Going back into the winlogbeat logs, and just like that, our Kali machine got banned from accessing my domain controller.
+
+<img src="https://i.imgur.com/h7sKCTE.png" width="500" height="1000" />
+
+**Conclusion**
+Fail2ban is one of the easier and more beginner-friendly ways to secure your instance from simple password attacks like Hydra. Usually when programs like these aren't used in a stealthy way, it's pretty easy to secure systems from simple attacks like these. It does get more difficult when attacks become more sophisticated, but with proper configurations, and maybe some automation thrown into the mix, even those attacks can be stopped. With proper knowledge of both how to attack the system and how to secure it, it gets a lot easier to know how to properly secure an environment.
