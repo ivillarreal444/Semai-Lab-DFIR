@@ -8,7 +8,7 @@ This DFIR-based home lab project aimed to establish a controlled environment for
 
 - Advanced understanding of SIEM concepts and practical application.
 - Ability to ingest and generate network logs.
-- Enhanced knowledge of Certificate Authorities and the Windows Active Directory Environment
+- Enhanced knowledge of digital forensics and attack mitigation.
 - Development of critical thinking and problem-solving skills in cybersecurity.
 
 ### Tools Used
