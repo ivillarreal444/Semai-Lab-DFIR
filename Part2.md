@@ -92,5 +92,11 @@ Conducting another password attack on the domain controller and.....it does not 
 
 <img src="https://i.imgur.com/hTAl9EY.png" width="500" height="1000" />
 
-Doing a little bit of research and it seems like fail2ban only stops attacks on Linux machines, which means technically i got it working to wear it will block IP addresses that attack the ELK machine, but I wanted to stop IP addresses that attack my Domain Controller. Luckily enough, there is a Windows version of fail2ban called "Fail2Ban4Win" which does the same thing as Fail2Ban except its logs are actually passed through Winlogbeat, and since I just got Winlogbeat working on the domain controller, now is a good time to test Fail2Ban4Win.
+Doing a little bit of research and it seems like fail2ban only stops attacks on Linux machines, which means technically i got it working to wear it will block IP addresses that attack the ELK machine, but I wanted to stop IP addresses that attack my Domain Controller. Luckily enough, there is a Windows version of fail2ban called "Fail2Ban4Win" which does the same thing as Fail2Ban, however Fail2Ban4Win only processes logs to its own folder, which would originally be able to be passed through Filebeat....but Filebeat is on my ELK stack VM, not my domain controller VM.
 
+Realistically the only thing I could do here was create an event log source for Fail2Beat4win, forward the log file to the event log using a powershell script, and then make the script run automatically so that Winlogbeat could pass the logs through that way.
+
+
+<img src="https://i.imgur.com/vWDbiWp.png" width="500" height="1000" />
+
+<img src="https://i.imgur.com/d3cqaX8.png" width="500" height="1000" />
