@@ -116,4 +116,5 @@ Going back into the winlogbeat logs, and just like that, our Kali machine got ba
 <img src="https://i.imgur.com/h7sKCTE.png" width="500" height="1000" />
 
 **Conclusion**
+
 Fail2ban is one of the easier and more beginner-friendly ways to secure your instance from simple password attacks like Hydra. Usually when programs like these aren't used in a stealthy way, it's pretty easy to secure systems from simple attacks like these. It does get more difficult when attacks become more sophisticated, but with proper configurations, and maybe some automation thrown into the mix, even those attacks can be stopped. With proper knowledge of both how to attack the system and how to secure it, it gets a lot easier to know how to properly secure an environment.
