@@ -102,3 +102,7 @@ Realistically the only thing I could do here was create an event log source for 
 <img src="https://i.imgur.com/d3cqaX8.png" width="500" height="1000" />
 
 <img src="https://i.imgur.com/qQpaSwN.png" width="500" height="1000" />
+
+After this, Fail2Ban4Win is now displaying logs in the Event log, and now it is time to start the Hydra attack once again from my Kali machine.
+
+<img src="https://i.imgur.com/dukMLVa.png" width="500" height="1000" />
