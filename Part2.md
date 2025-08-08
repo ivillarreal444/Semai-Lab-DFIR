@@ -14,7 +14,8 @@ This DFIR-based home lab project aimed to establish a controlled environment for
 ### Tools Used
 - Type-2 Hypervisor for Virtual Machine Cluster setup
 - Windows and Linux machines for various DFIR environments
-- Security Information and Event Management (SIEM) system for log ingestion and analysis.
+- Security Information and Event Management (SIEM) system for log ingestion and forensic analysis.
+- Automated background services for attack detection and mitigation.
 
 
 
