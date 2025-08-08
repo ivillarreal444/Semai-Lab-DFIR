@@ -1,4 +1,4 @@
-# Semai Lab DFIR: Simulating and Detecting an Attack using Elastic Defend
+# Semai Lab DFIR: Simulating and Detecting an Attack - Scenario 1: Password Spraying
 
 ## Objective
 
@@ -82,5 +82,15 @@ Once that was done, I then created a patterns/ directory and added the following
 
 <img src="https://i.imgur.com/VMOGELl.png" width="500" height="1000" />
 
-After these expression patterns are added, I then force reloaded logstash.
+After these expression patterns are added, I then force reloaded logstash. To make things cleaner and easier for Sysmon log ingestion, I also went ahead and installed Winlogbeat onto my domain controller.
+
+Running an nmap scan from my Kali machine now that Winlogbeat is working, I can now see that RDP is definitely the most vulnerable port in the domain controller as my Kali machine got a direct connection established to the RDP port, and Winlogbeat logged that exact event with the IP of my Kali machine.
+
+<img src="https://i.imgur.com/T4cxxRN.png" width="500" height="1000" />
+
+Conducting another password attack on the domain controller and.....it does not seem like file2ban is stopping the attack.
+
+<img src="https://i.imgur.com/hTAl9EY.png" width="500" height="1000" />
+
+Doing a little bit of research and it seems like fail2ban only stops attacks on Linux machines, which means technically i got it working to wear it will block IP addresses that attack the ELK machine, but I wanted to stop IP addresses that attack my Domain Controller. Luckily enough, there is a Windows version of fail2ban called "Fail2Ban4Win" which does the same thing as Fail2Ban except its logs are actually passed through Winlogbeat, and since I just got Winlogbeat working on the domain controller, now is a good time to test Fail2Ban4Win.
 
