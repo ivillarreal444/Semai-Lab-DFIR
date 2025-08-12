@@ -26,6 +26,7 @@ Before running this malware, I took a snapshot of every machine that I will be u
 
 
 **Scenario 1: Password Spraying**
+
 Password Spraying is one of the easiest and most common attack techniques as it involves utilizing lists of common usernames and passwords, repeatedly brute-forcing those usernames and passwords throughout an entire server, and analyzing which accounts have successful logins from these attempts. In a very secure environment, this should not be that much of a problem, but even in today's environment it can still be a viable strategy, especially when targeting individuals who might not have much knowledge of internet security.
 
 When scanning the environment with nmap, I noticed that there are a LOT of ports open in the Domain Controller. This is most likely the result of the script I downloaded during the AD setup, which opened the domain controller to many vulnerabilities, such as these open ports that I am now able to exploit.
