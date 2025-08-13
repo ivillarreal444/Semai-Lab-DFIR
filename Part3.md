@@ -59,8 +59,6 @@ And there's our target file! Let's go ahead and download "owo.txt" and view the 
 
 <img src="https://i.imgur.com/CMUkcKa.png" width="500" height="1000" />
 
-<img src="https://i.imgur.com/CMUkcKa.png" width="500" height="1000" />
-
 Taking a look inside the file, we can see a very long hash hidden within the file itself. Let's decode it and see what it says!
 
 <img src="https://i.imgur.com/vVENlEe.png" width="500" height="1000" />
