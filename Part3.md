@@ -69,3 +69,9 @@ Since it is a very long hash, I'm going to assume this hash is a base64 hash, an
 
 And just like that, we've successfully uncovered the hidden file's contents!
 [(here's the image if you're curious)](https://cdn.discordapp.com/attachments/525103371691098113/1404627638542139543/GRITuHYWwAAj-85.png?ex=689c89ad&is=689b382d&hm=9bb64c5dfb6041d88762649cf30012808c694fff49fc1a17c60810670145e73e&)
+
+**Mitigation**
+Mitigation for this type of attack is actually pretty simple, in fact, most of the mitigation was already done for us by enabling Windows Firewall during our configuration of Fail2Ban4Win, however, for something like this, there's a little bit more we need to do to ensure that Celesta's TGT isn't exposed, and it's super simple as uncheckmarking "Do not require Kerberos Pre-Authentication" and uncheckmarking "Password never expires" in her user's properties in the "Active Directory Users and Computers menu". If you hadn't noticed already in a previous screenshot, some users were only marked as "present". That's because they required Kerberos Pre-Authentication, meaning they had to be verified through a built-in Kerberos authentication server first, and since Celesta's account did not require this same authentication, that was how we were able to send in a dummy request and make the domain controller return her TGT that way.
+
+**Conclusion**
+Exploits like this are pretty simple to execute, as they usually only require user credentials as well as misconfigurations on the main operating system's end. If we really wanted to go crazy and abuse exploits like EternalBlue, we would have to find a way to execute a payload onto the machine first, which can lead into 
