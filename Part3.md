@@ -33,4 +33,41 @@ In this scenario, a new user was added to the domain, this user in particular be
 
 So how do we get this Ticket-Grant-Ticket in the first place? Luckily for us, metasploit has just the module! auxiliary/gather/kerberos_enumusers allows us to enumerate every domain user using our open Kerberos port. Although most of these accounts cannot simply be accessed because of their Kerberos Pre-Authentication setting, I intentionally forgot to disable Celesta's Kerberos Pre-authentication protocol, meaning one exploit from Metasploit later....
 
+<img src="https://i.imgur.com/Da0xdjG.png" width="500" height="1000" />
 
+Using the enumusers module, we were able to instantly grab Celesta's hash! This hash was provided to us specifically through an Authentication Service Response Message (ASREP) that was sent from the domain controller after the client, which in this case is Celesta, sent an Authentication Service Request (ASREQ) to the domain controller. ASREP responds to ASREQ with a session key as well as the Ticket-Granting-Ticket, the hash that metasploit was able to grab from ASREP using the enumusers module. Now comes the question, how do we crack this hash? Lucky for us, certain password cracking tools, like John The Ripper, come with the ability to crack these hashes in a method known as ASREPRoasting.
+
+<img src="https://i.imgur.com/O5T6wqT.png" width="500" height="1000" />
+
+Using John The Ripper, we were able to crack the TGT of Celesta's account, which included both her username and password. Now that we have a username and password, we can have some fun with smbmap!
+
+<img src="https://i.imgur.com/hYn6XPH.png" width="500" height="1000" />
+
+While we're at it, while checking out logs in Elastic, I found the exact log that generated when we found the TGT of Celesta's account using metasploit. Turns out the kerberos_enumusers module ended up able to login to Celesta's account entirely, which is a pretty critical indicator of compromise given that the IP is, in fact, from the attacking Kali machine itself.
+
+<img src="https://i.imgur.com/x8p4CCa.png" width="500" height="1000" />
+
+Plugging in Celesta's credentials into smbmap, we're now able to see the entire disk's contents, although we're only able to view certain areas of the disk as Celesta only has access to a certain amount of folders. Let's investigate the "Common" folder!
+
+<img src="https://i.imgur.com/4UVVTpy.png" width="500" height="1000" />
+
+That "maemaemaemaem" folder seems pretty interesting....
+
+<img src="https://i.imgur.com/OEOt9OR.png" width="500" height="1000" />
+
+And there's our target file! Let's go ahead and download "owo.txt" and view the contents of the file.
+
+<img src="https://i.imgur.com/CMUkcKa.png" width="500" height="1000" />
+
+<img src="https://i.imgur.com/CMUkcKa.png" width="500" height="1000" />
+
+Taking a look inside the file, we can see a very long hash hidden within the file itself. Let's decode it and see what it says!
+
+<img src="https://i.imgur.com/vVENlEe.png" width="500" height="1000" />
+
+Since it is a very long hash, I'm going to assume this hash is a base64 hash, and after decoding that, I'll decode to base32, and then to base16 and see if that works.
+
+<img src="https://i.imgur.com/p3YslXC.png" width="500" height="1000" />
+
+And just like that, we've successfully uncovered the hidden file's contents!
+[(here's the image if you're curious)](https://cdn.discordapp.com/attachments/525103371691098113/1404627638542139543/GRITuHYWwAAj-85.png?ex=689c89ad&is=689b382d&hm=9bb64c5dfb6041d88762649cf30012808c694fff49fc1a17c60810670145e73e&)
