@@ -59,3 +59,7 @@ After adding a couple of firewall rules that allow communication ONLY to and fro
 Going to the Tsurugi Linux VM, the file was successfully imported to the VM. Analyzing the file here would not be a great idea, however, as it does have open internet access, so let's go ahead and transport it into FlareVM...
 
 <img src="https://i.imgur.com/xzED9g7.png" width="500" height="1000" />
+
+...and also into Remnux, that way we have 2 Analysis VMs to work with, just incase!
+
+<img src="https://i.imgur.com/USNF85w.png" width="500" height="1000" />
