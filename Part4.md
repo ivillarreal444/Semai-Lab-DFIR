@@ -39,4 +39,21 @@ Now we're ready to download the malware sample directly from the github page!
 
 **NOTE: If you're following along, PLEASE isolate your OS before continuing further! I take no responsibility for misuse! CONTINUE AT YOUR OWN RISK!**
 
-After isolating my domain controller using pfsense, I then compiled the file...
+After isolating my domain controller using pfsense, I then compiled the file, which ended up becoming successful so far! Elastic Security did not alert me about the compiled executable file. Time to have some fun!
+
+<img src="https://i.imgur.com/5szxs64.png" width="500" height="1000" />
+
+After executing the file, the program went straight to action. It didn't even take that long for me to find evidence of the executable file editing registry entries right after execution.
+
+<img src="https://i.imgur.com/rPKQdIt.png" width="500" height="1000" />
+
+Not only were registries changed, while filtering logs by "process.name: dns_rev_shell.exe", I found a log that shows a DNS query to a dns called "c2.malicious.local". What makes this stand out from typical DNS queries is the first two characters in the domain: C2. This DNS query is leading to a Command-And-Control infrastructure, an essential tool used by bad actors to control malware on affected devices. If I planted something like this in Celesta's instance in the last scenario, I probably would've been able to gain easier access to her desktop environment, as well as potentially abuse exploits that would lead to privilege escelation, and this is only one scenario that becomes possible with malware.
+
+**Malware Analysis and Mitigation**
+Now comes the question, how would we be able to transport this malware to a safe environment to analyze it? We know some of the things that the malware did just from elastic logs, but that's generally not enough as agents like winlogbeat can only log so much. This is where Tsurugi, FlareVM, and Remnux come into play.
+
+After adding a couple of firewall rules that allow communication ONLY to and from Tsurugi and domain controller, I transfer the malicious file from the domain controller, as well as remove the file from the OS completely.
+
+<img src="https://i.imgur.com/HqavsJF.png" width="500" height="1000" />
+
+Going to the Tsurugi Linux VM, the file was successfully imported to the VM. Analyzing the file here would not be a great idea, however, as it does have open internet access.
