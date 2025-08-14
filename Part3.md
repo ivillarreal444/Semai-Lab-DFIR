@@ -74,4 +74,30 @@ And just like that, we've successfully uncovered the hidden file's contents!
 Mitigation for this type of attack is actually pretty simple, in fact, most of the mitigation was already done for us by enabling Windows Firewall during our configuration of Fail2Ban4Win, however, for something like this, there's a little bit more we need to do to ensure that Celesta's TGT isn't exposed, and it's super simple as uncheckmarking "Do not require Kerberos Pre-Authentication" and uncheckmarking "Password never expires" in her user's properties in the "Active Directory Users and Computers menu". If you hadn't noticed already in a previous screenshot, some users were only marked as "present". That's because they required Kerberos Pre-Authentication, meaning they had to be verified through a built-in Kerberos authentication server first, and since Celesta's account did not require this same authentication, that was how we were able to send in a dummy request and make the domain controller return her TGT that way.
 
 **Conclusion**
-Exploits like this are pretty simple to execute, as they usually only require user credentials as well as misconfigurations on the main operating system's end. If we really wanted to go crazy and abuse exploits like EternalBlue, we would have to find a way to execute a payload onto the machine first, which can lead into 
+Exploits like this are pretty simple to execute, as they usually only require user credentials as well as misconfigurations on the main operating system's end. If we really wanted to go crazy and abuse exploits like EternalBlue, we would have to find a way to execute a payload onto the machine first, which could lead into a privilege escelation attack that can get us into the root user, or administrator, of the entire operating system itself, which would've granted us access to every single folder in the disk, including C:. 
+
+**Extra: Attempt of using a CVE Exploit to attack an OS**
+I was going to add a bonus scenario to this part of the project as I had wanted to expolit a CVE that looked relatively easy to exploit , which I was almost able to exploit, however, due to several limitations, including the OS being a little too new (only worked on windows server 2008 apparently), as well as Elastic Security repeatedly detecting the malware, I was unsuccessul with my attempt, but I thought it would be best to showcase some of the things I did in the exploit attempt anyways, as I did learn quite a bit from attempting this exploit.
+
+**CVE-2018-8120**
+This exploit took adavantage of a privilege escalation vulnerability in the way Win32k handled memory. If Win32k failed to properly handle memory, a privilege escalation vulnerability would occur, resulting in an attacker gaining complete access to the machine.
+
+In order to exploit this vulnerability, we would've needed initial RDP access to the machine, as we needed to setup a shell/merterpreterwhich prompted me to create a scenario where Celesta was working remotely as her TGT credentials were grabbed, which allowed me to use freerdp3 to connect to her remote desktop instance when she wasn't using it.
+
+<img src="https://i.imgur.com/UUrOA21.png" width="500" height="1000" />
+
+Using metasploit's exploit/multi/handler exploit equipped with the windows/x64/shell/reverse_tcp payload, I was able to set up a shell equippped with a reverse TCP handler leading to the kali instance.
+
+<img src="https://i.imgur.com/Eqk1zrk.png" width="500" height="1000" />
+
+Once that was done, I was able to setup a http server leading to my kali machine on port 8080. I had lost the screenshot for it, but I was able to use the same reverse_tcp payload to create a shell.exe file that I was supposed to open in the RDP instance...but there was one slight problem.
+
+<img src="https://i.imgur.com/wG8MMcU.png" width="500" height="1000" />
+
+Elastic Security's antimalware feature refused to let me add the executable to my machine, and even obfuscating the payload using a polymorphic encoder wouldn't do the trick. I could also tell it was Elastic Security deleting that exact file by looking in my Elastic logs.
+
+<img src="https://i.imgur.com/YMEPGNe.png" width="500" height="1000" />
+
+<img src="https://i.imgur.com/sGx67WV.png" width="500" height="1000" />
+
+I had also tried a simple PowerShell script to try and sneak the executable file in, but because of the OS being newer, the powershell script ended up doing exactly nothing. At that point was when I realized there was realistically no way to exploit the CVE, so I ended up giving up, but that didn't mean I didn't learn anything from the attempt, because if the executable went undetected, I would've gotten complete access to the machine. In a scenario where I gave Celesta the file and she would run it on her own machine, I would've been able to gain access to her machine without even needing her credentials, which is where malware starts to become a very useful tool when it comes to unauthorized access. It would have been pretty cool to add a bonus successful CVE exploit scenario to this part of the project, but it wasn't required since I had already showcased a simple exploit on this part, and it was all for fun and additional learning that I was interested in.
