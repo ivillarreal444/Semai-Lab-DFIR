@@ -54,7 +54,7 @@ Now comes the question, how would we be able to transport this malware to a safe
 
 After adding a couple of firewall rules that allow communication ONLY to and from Tsurugi and domain controller, I transfer the malicious file from the domain controller, as well as remove the file from the OS completely.
 
-<img src="https://i.imgur.com/HqavsJF.png" width="500" height="1000" />
+<img src="https://i.imgur.com/nfQJBWm.png" width="500" height="1000" />
 
 Going to the Tsurugi Linux VM, the file was successfully imported to the VM. Analyzing the file here would not be a great idea, however, as it does have open internet access, so let's go ahead and transport it into FlareVM...
 
