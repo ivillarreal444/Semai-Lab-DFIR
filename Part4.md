@@ -56,4 +56,6 @@ After adding a couple of firewall rules that allow communication ONLY to and fro
 
 <img src="https://i.imgur.com/HqavsJF.png" width="500" height="1000" />
 
-Going to the Tsurugi Linux VM, the file was successfully imported to the VM. Analyzing the file here would not be a great idea, however, as it does have open internet access.
+Going to the Tsurugi Linux VM, the file was successfully imported to the VM. Analyzing the file here would not be a great idea, however, as it does have open internet access, so let's go ahead and transport it into FlareVM...
+
+<img src="https://i.imgur.com/xzED9g7.png" width="500" height="1000" />
