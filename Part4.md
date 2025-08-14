@@ -1,8 +1,8 @@
-# Semai Lab DFIR: Simulating and Detecting an Attack - Scenario 1: Password Spraying
+# Semai Lab DFIR: Simulating and Detecting an Attack - Scenario 3: Introduction to Malware
 
 ## Objective
 
-This DFIR-based home lab project aimed to establish a controlled environment for simulating and detecting various types of cyber attacks. The primary focus was to ingest and analyze logs within a Security Information and Event Management (SIEM) system and simulate scenarios from basic learning scenarios to imitating real world scenarios. In this part of the project, I will be simulating attack scenarios to gain a better understanding of log analysis.
+This DFIR-based home lab project aimed to establish a controlled environment for simulating and detecting various types of cyber attacks. The primary focus was to ingest and analyze logs within a Security Information and Event Management (SIEM) system and simulate scenarios from basic learning scenarios to imitating real world scenarios. In this part of the project, I will be simulating attack scenarios to gain a better understanding of log analysis and threat detection and mitigation.
 
 ### Skills Learned
 
@@ -20,3 +20,4 @@ This DFIR-based home lab project aimed to establish a controlled environment for
 
 
 ## Steps
+In the previous scenario, we demonstrated an attack scenario involving poor security configurations and poor login credentials. This scenario then led to an exploit attempt that became unsuccessful by the end of it, but also led into our next scenario involving malware.
