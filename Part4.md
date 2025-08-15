@@ -90,3 +90,6 @@ This main script tells us the process the file used to execute the functions we 
 
 **Remediation**
 Now that we exactly know what's the file is doing, now we can take the appropriate steps to mitigate it! I had already deleted the files from the domain controller earlier, but now would probably be a good time to delete the file from all of my machines, including FlareVM, Remnux, and Tsurugi. Additionally, it's also probably best to revert every computer to its previous screenshots to fully ensure that the threat is fully removed from our machines used in this scenario.
+
+**Conclusion**
+This is only the start of our journey of how malware behaves, how we can identify and detect the type of malware with its behavior, and how we can mitigate it. There are so many malware samples out there free for us to mess around with, but because of the dangerous nature, there will come a point where it will likely be too dangerous to execute malware on our domain controller, which unfortunately means that we won't be able to exactly use the domain controller and ELK stack to learn more about malware behavior inside the computer itself, but we'll also discover other tools that will bridge that gap for us. Buckle up, because this is only the beginning of our malware analysis journey!
