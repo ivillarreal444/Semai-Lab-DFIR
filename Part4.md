@@ -9,13 +9,15 @@ This DFIR-based home lab project aimed to establish a controlled environment for
 - Advanced understanding of SIEM concepts and practical application.
 - Ability to ingest and generate network logs.
 - Enhanced knowledge of digital forensics and attack mitigation.
+- Development of knowledge of malware behavior and the tools used in conducting basic malware analysis
 - Development of critical thinking and problem-solving skills in cybersecurity.
 
 ### Tools Used
-- Type-2 Hypervisor for Virtual Machine Cluster setup
+- Type-2 Hypervisor for Virtual Machine Cluster
 - Windows and Linux machines for various DFIR environments
 - Security Information and Event Management (SIEM) system for log ingestion and forensic analysis.
 - Automated background services for attack detection and mitigation.
+- Malware Analysis tools for code decompilation and extensive code analysis (Ghidra)
 
 
 
