@@ -28,6 +28,10 @@ Since EchoThreat utilizes python files, unlike our last malware utilizing c file
 
 <img src="https://i.imgur.com/oQBpX5E.png" width="500" height="1000" />
 
+We'll also need to install PyYAML and Jinja2 in order for the program to function properly.
+
+<img src="https://i.imgur.com/BN3Hf4u.png" width="500" height="1000" />
+
 **CHECKPOINT: These checkpoints will be used in this and future simulations to serve as a reminder of when to isolate your environment if you're following along. I am not responsible for any misuse of malware by ignoring these checkpoints!**
 
 After compiling the file with Pyinstaller, we now have an executable file that we can run!
