@@ -71,15 +71,19 @@ And just like that, we've successfully uncovered the hidden file's contents!
 [(here's the image if you're curious)](https://cdn.discordapp.com/attachments/525103371691098113/1404627638542139543/GRITuHYWwAAj-85.png?ex=689c89ad&is=689b382d&hm=9bb64c5dfb6041d88762649cf30012808c694fff49fc1a17c60810670145e73e&)
 
 **Mitigation**
+
 Mitigation for this type of attack is actually pretty simple, in fact, most of the mitigation was already done for us by enabling Windows Firewall during our configuration of Fail2Ban4Win, however, for something like this, there's a little bit more we need to do to ensure that Celesta's TGT isn't exposed, and it's super simple as uncheckmarking "Do not require Kerberos Pre-Authentication" and uncheckmarking "Password never expires" in her user's properties in the "Active Directory Users and Computers menu". If you hadn't noticed already in a previous screenshot, some users were only marked as "present". That's because they required Kerberos Pre-Authentication, meaning they had to be verified through a built-in Kerberos authentication server first, and since Celesta's account did not require this same authentication, that was how we were able to send in a dummy request and make the domain controller return her TGT that way.
 
 **Conclusion**
+
 Exploits like this are pretty simple to execute, as they usually only require user credentials as well as misconfigurations on the main operating system's end. If we really wanted to go crazy and abuse exploits like EternalBlue, we would have to find a way to execute a payload onto the machine first, which could lead into a privilege escelation attack that can get us into the root user, or administrator, of the entire operating system itself, which would've granted us access to every single folder in the disk, including C:. 
 
 **Extra: Attempt of using a CVE Exploit to attack an OS**
+
 I was going to add a bonus scenario to this part of the project as I had wanted to expolit a CVE that looked relatively easy to exploit , which I was almost able to exploit, however, due to several limitations, including the OS being a little too new (only worked on windows server 2008 apparently), as well as Elastic Security repeatedly detecting the malware, I was unsuccessul with my attempt, but I thought it would be best to showcase some of the things I did in the exploit attempt anyways, as I did learn quite a bit from attempting this exploit.
 
 **CVE-2018-8120**
+
 This exploit took adavantage of a privilege escalation vulnerability in the way Win32k handled memory. If Win32k failed to properly handle memory, a privilege escalation vulnerability would occur, resulting in an attacker gaining complete access to the machine.
 
 In order to exploit this vulnerability, we would've needed initial RDP access to the machine, as we needed to setup a shell/merterpreterwhich prompted me to create a scenario where Celesta was working remotely as her TGT credentials were grabbed, which allowed me to use freerdp3 to connect to her remote desktop instance when she wasn't using it.
