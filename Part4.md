@@ -63,3 +63,30 @@ Going to the Tsurugi Linux VM, the file was successfully imported to the VM. Ana
 ...and also into Remnux, that way we have 2 Analysis VMs to work with, just incase!
 
 <img src="https://i.imgur.com/USNF85w.png" width="500" height="1000" />
+
+Ghidra is a reverse-engineering tool developed by the United States National Security Agency (NSA) with the primary role of reverse-engineering software, making it an essential tool for malware reverse-engineering, which is what I'll be using to decompile our malware.
+
+<img src="https://i.imgur.com/AGI27Uw.png" width="500" height="1000" />
+
+Right after importing the file into my project, I immediately noticed something that could be extremely useful in learning more about this malware before even analyzing the code: The MD5 and SHA256 hashes. These hashes are used to identify any type of file, including malware. A website like VirusTotal takes note of these hashes and can easily identify types of malware just by analyzing the hashes inside an executible file. VirusTotal can sometimes even provide the exact attack strategies associated with malware in order to tell us more about what the malware is exactly trying to do. Unfortunately for us, however, we get no result when plugging the hashes into VirusTotal, so we'll have to investigate a little further (we could've also dropped the entire file into VirusTotal before even running it in the first place, or we could've also used an online file analyzer like Triage to get more details on the file's behavior, but it's also better to reverse engineer the file itself to get a better understanding of exactly what it's doing).
+
+<img src="https://i.imgur.com/RO6BSwq.png" width="500" height="1000" />
+
+<img src="https://i.imgur.com/E0Tr3i7.png" width="500" height="1000" />
+
+After a little bit of digging through the assembly code, I noticed multiple bits of assembly that ghidra was able to decompile to C code I could understand. I'll go through my findings in little bits as I find them.
+
+In this bit of code, something I actually didn't catch while executing the malware in the domain controller was the file planting a file inside the ProgramData folder.
+
+<img src="https://i.imgur.com/ijeodHy.png" width="500" height="1000" />
+
+Ghidra was also able to pinpoint the part of the program that initiated the reverse shell connection to the c2 domain we spotted earlier. After a little bit of googling, I was able to come with the conclusion that the malware utilized ws2_32.dll to attempt to create a socket that leads to the malicious c2 domain, which created a connection from the domain controller to the malicious c2 domain (which probably didnt actually happen since I did isolate the domain controller from the internet before executing the malware).
+
+<img src="https://i.imgur.com/fai605e.png" width="500" height="1000" />
+
+This main script tells us the process the file used to execute the functions we found earlier. the function calls __main(), which initializes the program, then calls "drop_pwned_file()" to drop a file in the ProgramData folder telling us that we've been pwned, then calls the "reverse_shell()" function that creates the socket that connects the infected machine to the malicious c2 domain.
+
+<img src="https://i.imgur.com/GFG9UpC.png" width="500" height="1000" />
+
+**Remediation**
+Now that we exactly know what's the file is doing, now we can take the appropriate steps to mitigate it! I had already deleted the files from the domain controller earlier, but now would probably be a good time to delete the file from all of my machines, including FlareVM, Remnux, and Tsurugi. Additionally, it's also probably best to revert every computer to its previous screenshots to fully ensure that the threat is fully removed from our machines used in this scenario.
