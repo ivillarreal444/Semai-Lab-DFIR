@@ -23,6 +23,7 @@ This DFIR-based home lab project aimed to establish a controlled environment for
 In the previous scenario, we demonstrated an attack scenario involving poor security configurations and poor login credentials. This scenario then led to an exploit attempt that became unsuccessful by the end of it, but also led into our next scenario involving malware, which will lead into the "Malware Analysis" section of the project where we begin to reverse-engineer malware in order to determine what it's exactly doing.
 
 **Malware 1**
+
 For this scenario, I'm using a [malware sample](https://github.com/k-perrino/malware-workshop-acm-w) provided to me by the University of Texas at San Antonio's ACM-W club, which is a pretty fun club to get involved in (they also demonstrated the malware sample at a malware analysis workshop which was pretty cool). 
 
 **NOTE: Before executing the malware, PLEASE be sure to isolate your environment from your entire network, or perhaps even disable internet connectivity from the VM entirely. I'm running a different pfsense setup for this environment as winlogbeat still requires an outbound connection to the ELK stack VM in order to work, so I want to disconnect the domain controller from everything but the ELK stack VM, for now.**
@@ -50,6 +51,7 @@ After executing the file, the program went straight to action. It didn't even ta
 Not only were registries changed, while filtering logs by "process.name: dns_rev_shell.exe", I found a log that shows a DNS query to a dns called "c2.malicious.local". What makes this stand out from typical DNS queries is the first two characters in the domain: C2. This DNS query is leading to a Command-And-Control infrastructure, an essential tool used by bad actors to control malware on affected devices. If I planted something like this in Celesta's instance in the last scenario, I probably would've been able to gain easier access to her desktop environment, as well as potentially abuse exploits that would lead to privilege escelation, and this is only one scenario that becomes possible with malware.
 
 **Malware Analysis and Mitigation**
+
 Now comes the question, how would we be able to transport this malware to a safe environment to analyze it? We know some of the things that the malware did just from elastic logs, but that's generally not enough as agents like winlogbeat can only log so much. This is where Tsurugi, FlareVM, and Remnux come into play.
 
 After adding a couple of firewall rules that allow communication ONLY to and from Tsurugi and domain controller, I transfer the malicious file from the domain controller, as well as remove the file from the OS completely.
@@ -89,7 +91,9 @@ This main script tells us the process the file used to execute the functions we 
 <img src="https://i.imgur.com/GFG9UpC.png" width="500" height="1000" />
 
 **Remediation**
+
 Now that we exactly know what's the file is doing, now we can take the appropriate steps to mitigate it! I had already deleted the files from the domain controller earlier, but now would probably be a good time to delete the file from all of my machines, including FlareVM, Remnux, and Tsurugi. Additionally, it's also probably best to revert every computer to its previous screenshots to fully ensure that the threat is fully removed from our machines used in this scenario.
 
 **Conclusion**
+
 This is only the start of our journey of how malware behaves, how we can identify and detect the type of malware with its behavior, and how we can mitigate it. There are so many malware samples out there free for us to mess around with, but because of the dangerous nature, there will come a point where it will likely be too dangerous to execute malware on our domain controller, which unfortunately means that we won't be able to exactly use the domain controller and ELK stack to learn more about malware behavior inside the computer itself, but we'll also discover other tools that will bridge that gap for us. Buckle up, because this is only the beginning of our malware analysis journey!
