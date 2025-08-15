@@ -22,3 +22,14 @@ This DFIR-based home lab project aimed to establish a controlled environment for
 ## Steps
 Welcome to the first of three malware analysis simulations that I will be performing on my DFIR environment! These scenarios will scale in difficulty, from an easy sample of malware to analyze to a more sophisticated and possibly difficult sample of malware to challenge my understanding of malware analysis. In this simulation, I technically won't necessarily be using a typical malware sample per say, but it is a program called [EchoThreat](https://github.com/hulkmode/echothreat/tree/main), which triggers lots of detections in my SIEM, and the goal for this scenario is to produce detection logs using the program, closely analyze those logs and find out how the program is triggering those detections, and then isolate the program and look at the code in a much deeper depth. Since this program's purpose is only to generate logs and act as a suspicious piece of software even though it's harmless, I generally wouldn't need to isolate the domain controller, but it's still good practice to isolate your virtual machines when detonating malware, just so the malware doesn't actually escape the machine and travel to places other than the VM itself. It's also good practice to create a snapshot/backup of the machine's current state and revert to that same snapshot/backup to ensure full removal of the threat, rather than just uninstalling the malware and calling it a day.
 
+<img src="https://i.imgur.com/xrpKE7p.png" width="500" height="1000" />
+
+Since EchoThreat utilizes python files, unlike our last malware utilizing c files, we'll be using a program called PyInstaller to compile the python files into a working executable file.
+
+<img src="https://i.imgur.com/oQBpX5E.png" width="500" height="1000" />
+
+**CHECKPOINT: These checkpoints will be used in this and future simulations to serve as a reminder of when to isolate your environment if you're following along. I am not responsible for any misuse of malware by ignoring these checkpoints!**
+
+After compiling the file with Pyinstaller, we now have an executable file that we can run!
+
+<img src="https://i.imgur.com/1WN12JN.png" width="500" height="1000" />
